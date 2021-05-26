@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+	<div class="container">
+		<div class="table-responsive">
+			<table id="ticketlistTable" class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Venue</th>
+						<th>Category</th>
+						<th>List Price</th>
+						<th>Our Price</th>
+						<th>Active?</th>
+						<th>Operation</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="ticket : ${ticketList}">
+						<!-- <td><input hidden="hidden" name="id" th:value="${ticket.id}"/></td> -->
+						<td><a th:href="@{/ticket/ticketInfo(id=${ticket.id})}"><span th:text="${ticket.title}"></span></a></td>
+						<td th:text="${ticket.venue}"></td>
+						<td th:text="${ticket.category}"></td>
+						<td th:text="${ticket.listPrice}"></td>
+						<td th:text="${ticket.ourPrice}"></td>
+						<td th:text="${ticket.active}"></td>
+						<td>delete</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div th:replace="common/header :: body-bottom-scripts" />
+	
+	<script>
+		$(document).ready(function() {
+			$("#ticketlistTable").DataTable({
+				"lengthMenu" : [
+							   [5,10,15,20,-1],[5,10,15,20,"All"]
+							   ],
+				"ordering":false,
+				stateSave: true
+			});
+		});
+	</script>
+</body>
+</html>
