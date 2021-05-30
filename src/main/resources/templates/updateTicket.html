@@ -16,7 +16,7 @@
 					</legend>
 
 					<input hidden="hidden" name="id" th:value="${ticket.id}" />
-					
+
 					<!-- Title -->
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="title">* Title</label>
@@ -140,8 +140,8 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<input th:value="${ticket.shippingWeight}" type="number"
-									name="shippingWeight" class="form-control" id="shippingWeight" step="0.01"
-									placeholder="Shipping Weight" /> <span
+									name="shippingWeight" class="form-control" id="shippingWeight"
+									step="0.01" placeholder="Shipping Weight" /> <span
 									class="input-group-addon">Ounces</span>
 							</div>
 							<span class="help-block">Shipping Weight of the order</span>
@@ -155,8 +155,9 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> <input
-									th:value="${ticket.listPrice}" type="number" name="listPrice" step="0.01"
-									class="form-control" id="listPrice" placeholder="List Price" />
+									th:value="${ticket.listPrice}" type="number" name="listPrice"
+									step="0.01" class="form-control" id="listPrice"
+									placeholder="List Price" />
 							</div>
 							<span class="help-block">List Price of the Ticket</span>
 						</div>
@@ -169,8 +170,9 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> <input
-									th:value="${ticket.ourPrice}" type="number" name="ourPrice" step="0.01"
-									class="form-control" id="ourPrice" placeholder="Our Price" />
+									th:value="${ticket.ourPrice}" type="number" name="ourPrice"
+									step="0.01" class="form-control" id="ourPrice"
+									placeholder="Our Price" />
 							</div>
 							<span class="help-block">Our Price of the Ticket</span>
 						</div>
@@ -196,9 +198,9 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<label><input value="true" type="radio" name="active"
-									id="active" checked="checked" />Active </label> <label><input
-									value="false" type="radio" name="active" id="active" />Inactive
-								</label>
+									id="active" th:checked="${ticket.active}" />Active </label> <label><input
+									value="false" type="radio" name="active"
+									th:checked="${!ticket.active}" />Inactive </label>
 							</div>
 							<span class="help-block">Whether the ticket is active or
 								inactive</span>
@@ -210,10 +212,9 @@
 						<label class="col-md-2 control-label" for="description">
 							Description</label>
 						<div class="col-md-8">
-							<textarea name="description" rows="5"
-								class="form-control" id="description"
-								th:value="${ticket.description}" th:text="${ticket.description}"
-								placeholder="Description"> </textarea>
+							<textarea name="description" rows="5" class="form-control"
+								id="description" th:value="${ticket.description}"
+								th:text="${ticket.description}" placeholder="Description"> </textarea>
 							<span class="help-block">Description of the ticket</span>
 						</div>
 					</div>
@@ -234,7 +235,8 @@
 						<div class="col-md-8">
 							<button type="submit" class="btn btn-success">Update
 								Ticket</button>
-							<a class="btn btn-danger" th:href="@{/ticket/ticketInfo(id=${ticket.id})}">Cancel</a>
+							<a class="btn btn-danger"
+								th:href="@{/ticket/ticketInfo(id=${ticket.id})}">Cancel</a>
 						</div>
 					</div>
 				</fieldset>
