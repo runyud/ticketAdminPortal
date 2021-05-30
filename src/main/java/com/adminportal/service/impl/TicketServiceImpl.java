@@ -30,4 +30,10 @@ public class TicketServiceImpl implements TicketService {
 		return ticketRepository.findOne(id);
 	}
 
+	@Override
+	public void removeOne(long id) {
+		ticketRepository.delete(id);
+		
+	}
+
 }

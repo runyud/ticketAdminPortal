@@ -79,6 +79,16 @@ public class TicketController {
 		return "ticketList";
 	}
 	
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String remove(
+			@ModelAttribute("id") String id, Model model) {
+		ticketService.removeOne(Long.parseLong(id.substring(10)));
+		List<Ticket> ticketList = ticketService.findAll();
+		model.addAttribute("ticketList", ticketList);
+		
+		return "redirect:/ticket/ticketList";
+	}
+	
 	private void saveImage(Ticket ticket, MultipartFile ticketImage, boolean ifUpdate) {
 		try {
 			byte[] bytes = ticketImage.getBytes();

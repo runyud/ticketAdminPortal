@@ -11,4 +11,6 @@ public interface TicketService {
 	List<Ticket> findAll();
 
 	Ticket findOne(Long id);
+
+	void removeOne(long id);
 }
